@@ -3,7 +3,7 @@ ARG VARIANT=3.1
 FROM mcr.microsoft.com/devcontainers/ruby:${VARIANT}
 
 # Install Rails
-RUN gem install rails webdrivers
+RUN gem install rails webdrivers && gem update bundler
 
 # Default value to allow debug server to serve content over GitHub Codespace's port forwarding service
 # The value is a comma-separated list of allowed domains 
@@ -18,7 +18,7 @@ RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSI
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
 # [Optional] Uncomment this line to install additional gems.
-# RUN gem install <your-gem-names-here>
+RUN gem install foreman
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
